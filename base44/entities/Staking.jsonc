@@ -1,0 +1,64 @@
+{
+  "type": "object",
+  "name": "Staking",
+  "title": "Staking Records",
+  "properties": {
+    "stakeId": {
+      "type": "string"
+    },
+    "userAddress": {
+      "type": "string"
+    },
+    "xrpAddress": {
+      "type": "string"
+    },
+    "network": {
+      "type": "string",
+      "enum": [
+        "qvtx",
+        "polygon",
+        "bsc",
+        "base",
+        "xrp"
+      ]
+    },
+    "amount": {
+      "type": "number"
+    },
+    "apy": {
+      "type": "number"
+    },
+    "lockPeriod": {
+      "type": "integer"
+    },
+    "dailyReward": {
+      "type": "number"
+    },
+    "totalReward": {
+      "type": "number"
+    },
+    "stakedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "unstakeAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "completed",
+        "cancelled"
+      ]
+    }
+  },
+  "required": [
+    "stakeId",
+    "userAddress",
+    "network",
+    "amount",
+    "status"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "type": "object",
+  "name": "MiningSyncs",
+  "title": "QVTXE Mining Sync",
+  "properties": {
+    "chainId": {
+      "type": "integer",
+      "description": "Native chain ID (20232 or 42000)"
+    },
+    "chainName": {
+      "type": "string",
+      "description": "Chain display name"
+    },
+    "lastSyncedBlock": {
+      "type": "integer",
+      "description": "Last block height synced to QVTXE contract"
+    },
+    "currentBlock": {
+      "type": "integer",
+      "description": "Current block height on native chain"
+    },
+    "pendingBlocks": {
+      "type": "integer",
+      "description": "Blocks awaiting sync"
+    },
+    "totalMinted": {
+      "type": "string",
+      "description": "Total QVTXE minted from this chain"
+    },
+    "totalBlocksSynced": {
+      "type": "integer",
+      "description": "Cumulative blocks synced"
+    },
+    "syncCount": {
+      "type": "integer",
+      "description": "Number of sync transactions"
+    },
+    "rewardPerBlock": {
+      "type": "string",
+      "description": "QVTXE reward per block"
+    },
+    "lastSyncTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "syncing",
+        "idle",
+        "error",
+        "offline"
+      ]
+    },
+    "rpcEndpoint": {
+      "type": "string",
+      "description": "Chain RPC URL"
+    }
+  },
+  "required": [
+    "chainId",
+    "chainName",
+    "status"
+  ]
+}

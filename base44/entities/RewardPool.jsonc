@@ -1,0 +1,72 @@
+{
+  "type": "object",
+  "name": "RewardPool",
+  "title": "QVTXE Reward & Liquidity Pool",
+  "properties": {
+    "poolType": {
+      "type": "string",
+      "enum": [
+        "reward",
+        "liquidity"
+      ],
+      "description": "Pool type"
+    },
+    "tokenSymbol": {
+      "type": "string",
+      "default": "QVTXE"
+    },
+    "balance": {
+      "type": "string",
+      "description": "Current pool balance"
+    },
+    "totalDeposited": {
+      "type": "string",
+      "description": "Total ever deposited"
+    },
+    "totalWithdrawn": {
+      "type": "string",
+      "description": "Total withdrawn or added to LP"
+    },
+    "splitPercent": {
+      "type": "number",
+      "description": "Percentage of mining rewards going to this pool"
+    },
+    "liquidityThreshold": {
+      "type": "string",
+      "description": "Auto-LP trigger threshold"
+    },
+    "pairAddress": {
+      "type": "string",
+      "description": "Uniswap pair address (LP pool only)"
+    },
+    "totalLpAdded": {
+      "type": "string",
+      "description": "Total QVTXE added as liquidity"
+    },
+    "totalLpTokens": {
+      "type": "string",
+      "description": "Total LP tokens received"
+    },
+    "lpRecipient": {
+      "type": "string",
+      "description": "Address receiving LP tokens"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "paused",
+        "depleted"
+      ]
+    }
+  },
+  "required": [
+    "poolType",
+    "tokenSymbol",
+    "status"
+  ]
+}

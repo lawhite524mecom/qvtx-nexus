@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "name": "Contracts",
+  "title": "Smart Contracts",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "chainId": {
+      "type": "integer"
+    },
+    "network": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "abi": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "address",
+    "chainId"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {}
+      ]
+    }
+  }
+}

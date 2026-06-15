@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "name": "FiatPurchases",
+  "title": "Fiat Purchase Records",
+  "properties": {
+    "provider": {
+      "type": "string",
+      "enum": [
+        "moonpay",
+        "transak",
+        "ramp"
+      ]
+    },
+    "transactionId": {
+      "type": "string"
+    },
+    "userAddress": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "fiatAmount": {
+      "type": "number"
+    },
+    "fiatCurrency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "qvtxAmount": {
+      "type": "string"
+    },
+    "txHash": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "completed",
+        "failed"
+      ]
+    }
+  },
+  "required": [
+    "provider",
+    "transactionId",
+    "userAddress",
+    "fiatAmount",
+    "qvtxAmount",
+    "status"
+  ]
+}

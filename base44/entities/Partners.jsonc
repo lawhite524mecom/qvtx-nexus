@@ -1,0 +1,84 @@
+{
+  "name": "Partners",
+  "type": "object",
+  "properties": {
+    "companyName": {
+      "type": "string",
+      "description": "Partner company name"
+    },
+    "contactName": {
+      "type": "string",
+      "description": "Primary contact name"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Contact email"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Contact phone number"
+    },
+    "partnershipType": {
+      "type": "string",
+      "enum": [
+        "strategic",
+        "technology",
+        "enterprise",
+        "deployment"
+      ],
+      "description": "Type of partnership"
+    },
+    "industry": {
+      "type": "string",
+      "description": "Partner industry"
+    },
+    "website": {
+      "type": "string",
+      "description": "Partner website URL"
+    },
+    "description": {
+      "type": "string",
+      "description": "Partnership proposal description"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "active",
+        "declined"
+      ],
+      "default": "pending",
+      "description": "Partnership status"
+    },
+    "assignedBotId": {
+      "type": "string",
+      "description": "Assigned AI partner bot conversation ID"
+    },
+    "onboardingCompleted": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether partner onboarding is complete"
+    },
+    "tier": {
+      "type": "string",
+      "enum": [
+        "silver",
+        "gold",
+        "platinum"
+      ],
+      "description": "Partnership tier"
+    },
+    "investmentAmount": {
+      "type": "string",
+      "description": "Investment or deal amount"
+    }
+  },
+  "required": [
+    "companyName",
+    "contactName",
+    "email",
+    "partnershipType"
+  ]
+}

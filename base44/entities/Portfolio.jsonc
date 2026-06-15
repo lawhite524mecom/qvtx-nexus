@@ -1,0 +1,97 @@
+{
+  "name": "Portfolio",
+  "type": "object",
+  "properties": {
+    "walletAddress": {
+      "type": "string",
+      "description": "Connected wallet address"
+    },
+    "totalValue": {
+      "type": "number",
+      "description": "Total portfolio value in USD"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "balance": {
+            "type": "string"
+          },
+          "valueUSD": {
+            "type": "number"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "AI",
+              "Gaming",
+              "Staking",
+              "DeFi",
+              "Other"
+            ]
+          },
+          "chain": {
+            "type": "string"
+          },
+          "priceChange24h": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "allocation": {
+      "type": "object",
+      "properties": {
+        "AI": {
+          "type": "number"
+        },
+        "Gaming": {
+          "type": "number"
+        },
+        "Staking": {
+          "type": "number"
+        },
+        "DeFi": {
+          "type": "number"
+        },
+        "Other": {
+          "type": "number"
+        }
+      }
+    },
+    "performanceHistory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "value": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "aiInsights": {
+      "type": "string",
+      "description": "AI-generated portfolio insights"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "walletAddress",
+    "totalValue"
+  ]
+}

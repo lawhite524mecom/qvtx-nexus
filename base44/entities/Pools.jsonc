@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "name": "Pools",
+  "title": "Liquidity Pools",
+  "properties": {
+    "poolId": {
+      "type": "string"
+    },
+    "token0": {
+      "type": "string"
+    },
+    "token1": {
+      "type": "string"
+    },
+    "pairAddress": {
+      "type": "string"
+    },
+    "tvl": {
+      "type": "number"
+    },
+    "apy": {
+      "type": "number"
+    },
+    "chainId": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "poolId",
+    "token0",
+    "token1"
+  ]
+}

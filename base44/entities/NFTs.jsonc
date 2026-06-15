@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "name": "NFTs",
+  "title": "NFT Collection",
+  "properties": {
+    "tokenId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "listed": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "tokenId",
+    "name"
+  ]
+}

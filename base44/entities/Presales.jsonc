@@ -1,0 +1,65 @@
+{
+  "type": "object",
+  "name": "Presales",
+  "title": "Token Presales",
+  "properties": {
+    "tokenId": {
+      "type": "string"
+    },
+    "tokenSymbol": {
+      "type": "string"
+    },
+    "pricePerToken": {
+      "type": "number"
+    },
+    "hardCap": {
+      "type": "string"
+    },
+    "softCap": {
+      "type": "string"
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "minContribution": {
+      "type": "number"
+    },
+    "maxContribution": {
+      "type": "number"
+    },
+    "totalRaised": {
+      "type": "string",
+      "default": "0"
+    },
+    "participants": {
+      "type": "integer",
+      "default": 0
+    },
+    "kycRequired": {
+      "type": "boolean",
+      "default": true
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "upcoming",
+        "active",
+        "ended",
+        "cancelled"
+      ],
+      "default": "upcoming"
+    }
+  },
+  "required": [
+    "tokenId",
+    "pricePerToken",
+    "hardCap",
+    "startTime",
+    "endTime"
+  ]
+}

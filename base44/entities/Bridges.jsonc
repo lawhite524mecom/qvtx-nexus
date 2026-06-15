@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "name": "Bridges",
+  "title": "Bridge Routes",
+  "properties": {
+    "sourceChain": {
+      "type": "string"
+    },
+    "destChain": {
+      "type": "string"
+    },
+    "sourceContract": {
+      "type": "string"
+    },
+    "destContract": {
+      "type": "string"
+    },
+    "fee": {
+      "type": "number"
+    },
+    "active": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "sourceChain",
+    "destChain"
+  ]
+}

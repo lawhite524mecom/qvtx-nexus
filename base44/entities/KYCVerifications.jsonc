@@ -1,0 +1,70 @@
+{
+  "type": "object",
+  "name": "KYCVerifications",
+  "title": "KYC Verifications",
+  "properties": {
+    "userAddress": {
+      "type": "string"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "country": {
+      "type": "string"
+    },
+    "documentType": {
+      "type": "string",
+      "enum": [
+        "passport",
+        "drivers_license",
+        "national_id"
+      ]
+    },
+    "documentNumber": {
+      "type": "string"
+    },
+    "documentImageUrl": {
+      "type": "string"
+    },
+    "selfieImageUrl": {
+      "type": "string"
+    },
+    "verificationStatus": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected",
+        "expired"
+      ],
+      "default": "pending"
+    },
+    "verifiedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "rejectionReason": {
+      "type": "string"
+    },
+    "riskScore": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    }
+  },
+  "required": [
+    "userAddress",
+    "fullName",
+    "email",
+    "country",
+    "documentType"
+  ]
+}

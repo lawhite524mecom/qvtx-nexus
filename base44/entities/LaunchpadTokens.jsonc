@@ -1,0 +1,78 @@
+{
+  "type": "object",
+  "name": "LaunchpadTokens",
+  "title": "Launchpad Tokens",
+  "properties": {
+    "tokenName": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "totalSupply": {
+      "type": "string"
+    },
+    "decimals": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 18,
+      "default": 18
+    },
+    "network": {
+      "type": "string",
+      "enum": [
+        "qvtx",
+        "polygon",
+        "bsc",
+        "base",
+        "xrp"
+      ]
+    },
+    "contractAddress": {
+      "type": "string"
+    },
+    "deployedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "vestingSchedule": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "beneficiary": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "string"
+          },
+          "releaseTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "released": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "deployed",
+        "active",
+        "completed"
+      ],
+      "default": "draft"
+    }
+  },
+  "required": [
+    "tokenName",
+    "symbol",
+    "totalSupply",
+    "decimals",
+    "network"
+  ]
+}
