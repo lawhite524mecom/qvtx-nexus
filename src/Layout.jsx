@@ -21,7 +21,8 @@ import {
   LogOut,
   UserCircle,
   Cpu,
-  Image
+  Image,
+  Zap
 } from "lucide-react";
 import { useAuth } from "@/lib/AuthContext";
 import { base44 } from "@/api/base44Client";
@@ -290,6 +291,19 @@ export default function Layout({ children, currentPageName }) {
               >
                 <Image className="w-4 h-4" />
                 NFTs
+              </Link>
+
+              <Link
+                to={createPageUrl("ServicesCatalog")}
+                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 ${
+                  currentPageName === "ServicesCatalog"
+                    ? "bg-white/15 text-white"
+                    : "hover:bg-white/10"
+                }`}
+                style={{ color: currentPageName === "ServicesCatalog" ? "#ffd700" : "#ffd700cc" }}
+              >
+                <Zap className="w-4 h-4" />
+                Services
               </Link>
 
               <Link
