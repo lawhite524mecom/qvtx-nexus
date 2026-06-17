@@ -11,11 +11,13 @@ export default function AllocationChart({ allocation }) {
     Other: "#64748b"
   };
 
-  const data = Object.entries(allocation || {}).map(([category, percentage]) => ({
-    name: category,
-    value: percentage,
-    color: categoryColors[category] || "#64748b"
-  }));
+  const data = Object.entries(allocation || {})
+    .filter(([, percentage]) => percentage != null && !isNaN(percentage))
+    .map(([category, percentage]) => ({
+      name: category,
+      value: Number(percentage),
+      color: categoryColors[category] || "#64748b"
+    }));
 
   return (
     <GlassCard>
@@ -27,7 +29,7 @@ export default function AllocationChart({ allocation }) {
             cx="50%"
             cy="50%"
             labelLine={false}
-            label={({ name, value }) => `${name}: ${value.toFixed(1)}%`}
+            label={({ name, value }) => `${name}: ${value != null ? value.toFixed(1) : 0}%`}
             outerRadius={100}
             fill="#8884d8"
             dataKey="value"
@@ -54,7 +56,7 @@ export default function AllocationChart({ allocation }) {
               style={{ backgroundColor: item.color }}
             />
             <span className="text-sm text-white/60">{item.name}</span>
-            <span className="text-sm font-semibold ml-auto">{item.value.toFixed(1)}%</span>
+            <span className="text-sm font-semibold ml-auto">{item.value != null ? item.value.toFixed(1) : 0}%</span>
           </div>
         ))}
       </div>
