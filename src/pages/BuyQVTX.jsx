@@ -281,7 +281,7 @@ export default function BuyQVTX() {
                   </div>
                   <div className="flex justify-between mb-2">
                     <span className="text-white/60 text-sm">QVTX price</span>
-                    <span className="font-semibold">$5.33</span>
+                    <span className="font-semibold text-white/50">—</span>
                   </div>
                   <div className="flex justify-between mb-2">
                     <span className="text-white/60 text-sm">Est. fee (3%)</span>
@@ -289,9 +289,7 @@ export default function BuyQVTX() {
                   </div>
                   <div className="pt-3 border-t border-white/10 flex justify-between">
                     <span className="text-white/80">You receive</span>
-                    <span className="text-xl font-bold text-emerald-400">
-                      ~{((parseFloat(amount) * 0.97) / 5.33).toFixed(2)} QVTX
-                    </span>
+                    <span className="text-xl font-bold text-emerald-400">—</span>
                   </div>
                 </div>
               )}

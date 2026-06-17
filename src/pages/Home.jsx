@@ -1,6 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../utils";
+import { getBlockNumber, CHAINS } from "@/lib/chainConfig";
+
+function HomeLiveMetrics() {
+  const [mainnetBlock, setMainnetBlock] = useState(null);
+  const [dnaBlock, setDnaBlock] = useState(null);
+
+  useEffect(() => {
+    const load = async () => {
+      const [m, d] = await Promise.all([
+        getBlockNumber(CHAINS.QVTX_MAINNET.rpc),
+        getBlockNumber(CHAINS.DNA_EXPRESSION.rpc),
+      ]);
+      setMainnetBlock(m);
+      setDnaBlock(d);
+    };
+    load();
+  }, []);
+
+  const items = [
+    { label: "Chain 20232 Block", value: mainnetBlock !== null ? mainnetBlock.toLocaleString() : "—" },
+    { label: "Chain 42000 Block", value: dnaBlock !== null ? dnaBlock.toLocaleString() : "—" },
+    { label: "DNA Compression", value: "40:1" },
+    { label: "Frequency Lock", value: "8825 Hz" },
+    { label: "Error Rate", value: "0.00%" },
+    { label: "Chains Active", value: "2" },
+  ];
+
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+      {items.map(({ label, value }) => (
+        <div key={label}>
+          <p className="font-orbitron font-bold text-xl" style={{ color: "#ffd700" }}>{value}</p>
+          <p className="text-xs text-white/40 mt-1">{label}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -103,12 +141,12 @@ const infraItems = [
 
 
 const blockchainStats = [
-{ label: "Chain 20232 — DNA Mainnet", value: "GitHub Chainlist", sub: "Registered", icon: Layers, color: "#00d4ff" },
-{ label: "Chain 42000 — DNA Expression", value: "464M+", sub: "Codons Executed", icon: Dna, color: "#ffd700" },
+{ label: "Chain 20232 — DNA Mainnet", value: "Registered", sub: "GitHub Chainlist", icon: Layers, color: "#00d4ff" },
+{ label: "Chain 42000 — DNA Expression", value: "Live", sub: "DNA Expression", icon: Dna, color: "#ffd700" },
 { label: "DNA Compression", value: "40:1", sub: "Compression Ratio", icon: Cpu, color: "#00d4ff" },
 { label: "Error Rate", value: "0.00%", sub: "Verified", icon: BadgeCheck, color: "#ffd700" },
 { label: "Frequency Lock", value: "8825 Hz", sub: "Resonance", icon: Activity, color: "#00d4ff" },
-{ label: "Patent Portfolio", value: "31 Patents", sub: "$12.25B Valuation", icon: Lock, color: "#ffd700" }];
+{ label: "Patent Portfolio", value: "31 Patents", sub: "Filed & Pending", icon: Lock, color: "#ffd700" }];
 
 
 export default function Home() {
@@ -187,21 +225,7 @@ export default function Home() {
       {/* ── LIVE METRICS BAR ─────────────────────────────────── */}
       <section className="border-y py-6 px-4 sm:px-6 lg:px-8" style={{ borderColor: "rgba(255,215,0,0.1)", background: "rgba(0,0,0,0.3)" }}>
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
-            {[
-            { label: "Total TVL", value: "$1.6T" },
-            { label: "24H Volume", value: "$234.5M" },
-            { label: "QVTX Price", value: "$5.33" },
-            { label: "Holders", value: "45,892" },
-            { label: "Staking APY", value: "18.5%" },
-            { label: "Chains Active", value: "6" }].
-            map(({ label, value }) =>
-            <div key={label}>
-                <p className="font-orbitron font-bold text-xl" style={{ color: "#ffd700" }}>{value}</p>
-                <p className="text-xs text-white/40 mt-1">{label}</p>
-              </div>
-            )}
-          </div>
+          <HomeLiveMetrics />
         </div>
       </section>
 
