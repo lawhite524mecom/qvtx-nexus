@@ -55,6 +55,10 @@
     "rpcEndpoint": {
       "type": "string",
       "description": "Chain RPC URL"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000
     }
   },
   "required": [

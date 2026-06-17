@@ -20,6 +20,10 @@
     },
     "active": {
       "type": "boolean"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000
     }
   },
   "required": [

@@ -58,6 +58,10 @@
       "type": "number",
       "minimum": 0,
       "maximum": 100
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000
     }
   },
   "required": [
