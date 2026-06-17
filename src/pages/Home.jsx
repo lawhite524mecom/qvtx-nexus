@@ -213,7 +213,7 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl font-orbitron font-bold text-white mb-4">
               Every Service. <span style={{ color: "#00d4ff" }}>ByteID Verified.</span>
             </h2>
-            <p className="text-white/50 max-w-2xl mx-auto">A complete financial services infrastructurestack where every transaction is stamped with a ByteID on our quaternary DNA blockchain — creating an immutable, source-verified audit trail.
+            <p className="text-white/50 max-w-2xl mx-auto">A complete financial services infrastructure stack where every transaction is stamped with a ByteID on our quaternary DNA blockchain — creating an immutable, source-verified audit trail.
 
             </p>
           </motion.div>
