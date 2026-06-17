@@ -20,7 +20,8 @@ import {
   LogIn,
   LogOut,
   UserCircle,
-  Cpu
+  Cpu,
+  Image
 } from "lucide-react";
 import { useAuth } from "@/lib/AuthContext";
 import { base44 } from "@/api/base44Client";
@@ -279,6 +280,19 @@ export default function Layout({ children, currentPageName }) {
               </Link>
 
               <Link
+                to={createPageUrl("NFTGallery")}
+                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 ${
+                  currentPageName === "NFTGallery" || currentPageName === "MyNFTs" || currentPageName === "NFTDetail"
+                    ? "bg-white/15 text-white"
+                    : "hover:bg-white/10"
+                }`}
+                style={{ color: "#f472b6" }}
+              >
+                <Image className="w-4 h-4" />
+                NFTs
+              </Link>
+
+              <Link
                 to={createPageUrl("Docs")}
                 className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 ${
                   currentPageName === "Docs"
@@ -521,6 +535,24 @@ export default function Layout({ children, currentPageName }) {
                   >
                     <Cpu className="w-5 h-5" />
                     QVTXE Mining
+                  </Link>
+                  <Link
+                    to={createPageUrl("NFTGallery")}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all`}
+                    style={{ color: currentPageName === "NFTGallery" ? "#f472b6" : "#f472b6cc" }}
+                  >
+                    <Image className="w-5 h-5" />
+                    NFT Gallery
+                  </Link>
+                  <Link
+                    to={createPageUrl("MyNFTs")}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all`}
+                    style={{ color: currentPageName === "MyNFTs" ? "#f472b6" : "#f472b6cc" }}
+                  >
+                    <Image className="w-5 h-5" />
+                    My NFTs
                   </Link>
                 </div>
               </div>

@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "name": "NFTAutoMakeSettings",
+  "title": "NFT Auto-Make Settings",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "description": "User ID this setting belongs to"
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "selectedTone": {
+      "type": "string",
+      "enum": [
+        "Cosmic",
+        "Bio-Digital",
+        "Cyber-Punk",
+        "Quantum",
+        "Abstract"
+      ]
+    },
+    "generationCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "lastGeneratedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "userId"
+  ]
+}

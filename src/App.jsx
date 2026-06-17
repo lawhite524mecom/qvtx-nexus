@@ -6,6 +6,9 @@ import DNACompress from './pages/DNACompress'
 import Contracts from './pages/Contracts'
 import Disclosures from './pages/Disclosures'
 import QVTXEMining from './pages/QVTXEMining'
+import NFTGallery from './pages/NFTGallery'
+import MyNFTs from './pages/MyNFTs'
+import NFTDetail from './pages/NFTDetail'
 import GatedRoute from './components/auth/GatedRoute'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
@@ -89,6 +92,21 @@ const AuthenticatedApp = () => {
       <Route path="/QVTXEMining" element={
         <LayoutWrapper currentPageName="QVTXEMining">
           <QVTXEMining />
+        </LayoutWrapper>
+      } />
+      <Route path="/NFTGallery" element={
+        <LayoutWrapper currentPageName="NFTGallery">
+          <NFTGallery />
+        </LayoutWrapper>
+      } />
+      <Route path="/MyNFTs" element={
+        <LayoutWrapper currentPageName="MyNFTs">
+          <MyNFTs />
+        </LayoutWrapper>
+      } />
+      <Route path="/NFTDetail" element={
+        <LayoutWrapper currentPageName="NFTDetail">
+          <NFTDetail />
         </LayoutWrapper>
       } />
       <Route path="/chain/:chainId" element={
