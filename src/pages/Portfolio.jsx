@@ -227,21 +227,24 @@ function PortfolioContent() {
           <PortfolioOverview portfolio={portfolio} performance24h={performance24h} />
         </motion.div>
 
-        {/* Charts Row */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        {/* Performance Chart — full width */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="mb-8"
+        >
+          <PerformanceChart history={portfolio.performanceHistory} />
+        </motion.div>
+
+        {/* Allocation Chart */}
+        <div className="mb-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 }}
-          >
-            <AllocationChart allocation={portfolio.allocation} />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <PerformanceChart history={portfolio.performanceHistory} />
+            <AllocationChart allocation={portfolio.allocation} />
           </motion.div>
         </div>
 
