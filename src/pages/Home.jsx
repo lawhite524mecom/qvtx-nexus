@@ -209,7 +209,7 @@ export default function Home() {
       <section className="px-4 sm:px-6 lg:px-8 py-24">
         <div className="max-w-7xl mx-auto">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-16">
-            <p className="text-xs font-orbitron uppercase tracking-widest mb-3" style={{ color: "#ffd700" }}>Financial Services</p>
+            <p className="text-xs font-orbitron uppercase tracking-widest mb-3" style={{ color: "#ffd700" }}>INFRASTRUCTURE</p>
             <h2 className="text-3xl sm:text-4xl font-orbitron font-bold text-white mb-4">
               Every Service. <span style={{ color: "#00d4ff" }}>ByteID Verified.</span>
             </h2>
