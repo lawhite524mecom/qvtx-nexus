@@ -177,9 +177,9 @@ export default function Home() {
             
             <span className="text-white">Financial Infrastructure</span>
             <br />
-            <span style={{ color: "#ffd700" }} className="dna-glow-gold">Powered by DNA</span>
+            <span style={{ color: "#ffd700" }} className="dna-glow-gold">for Enterprise,</span>
             <br />
-            <span style={{ color: "#00d4ff" }} className="dna-glow-cyan">Blockchain</span>
+            <span style={{ color: "#00d4ff" }} className="dna-glow-cyan">Gov &amp; Institutions</span>
           </motion.h1>
 
           {/* Tagline */}
@@ -187,7 +187,7 @@ export default function Home() {
             variants={fadeUp} initial="hidden" animate="show" transition={{ delay: 0.14 }}
             className="text-xl sm:text-2xl font-light text-white/70 mb-4 italic">
             
-            "Whatever form your assets are in, we mobilize them."
+            "We supply the financial infrastructure that powers enterprise, government, and institutions."
           </motion.p>
 
           {/* Subtitle */}
@@ -195,9 +195,9 @@ export default function Home() {
             variants={fadeUp} initial="hidden" animate="show" transition={{ delay: 0.18 }}
             className="text-base sm:text-lg text-white/50 max-w-3xl mx-auto mb-12 leading-relaxed">
             
-            QVTX delivers end-to-end financial infrastructure — staking & liquidity pools, QvtXpress payment rails,
-            ISO 20022 messaging, and institutional onboarding — every position independently valued, source-verified,
-            and ByteID-stamped on-chain from day one.
+            QVTX supplies mission-critical financial infrastructure solutions purpose-built for enterprise, government agencies,
+            and institutional clients — staking & liquidity pools, QVTXpress payment rails, ISO 20022 messaging,
+            and institutional onboarding — every position independently valued, source-verified, and ByteID-stamped on-chain.
           </motion.p>
 
           {/* CTAs */}
@@ -235,9 +235,9 @@ export default function Home() {
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-16">
             <p className="text-xs font-orbitron uppercase tracking-widest mb-3" style={{ color: "#ffd700" }}>INFRASTRUCTURE</p>
             <h2 className="text-3xl sm:text-4xl font-orbitron font-bold text-white mb-4">
-              Every Service. <span style={{ color: "#00d4ff" }}>ByteID Verified.</span>
+              Infrastructure Solutions. <span style={{ color: "#00d4ff" }}>Built for Scale.</span>
             </h2>
-            <p className="text-white/50 max-w-2xl mx-auto">A complete financial services infrastructure stack. Where every transaction is stamped with a ByteID on our Quaternary DNA blockchain — creating an immutable, source-verified audit trail.
+            <p className="text-white/50 max-w-2xl mx-auto">A complete financial infrastructure stack purpose-built for enterprise, government, and institutional clients. Every transaction is ByteID-stamped on our Quaternary DNA blockchain — creating an immutable, source-verified audit trail.
 
             </p>
           </motion.div>
@@ -291,10 +291,10 @@ export default function Home() {
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-16">
             <p className="text-xs font-orbitron uppercase tracking-widest mb-3" style={{ color: "#00d4ff" }}>Infrastructure Layer</p>
             <h2 className="text-3xl sm:text-4xl font-orbitron font-bold text-white mb-4">
-              QVTX <span style={{ color: "#ffd700" }}>Financial Rails</span>
+              QVTX <span style={{ color: "#ffd700" }}>Infrastructure Rails</span>
             </h2>
             <p className="text-white/50 max-w-2xl mx-auto">
-              End-to-end infrastructure connecting traditional finance to blockchain-native settlement.
+              End-to-end infrastructure solutions connecting enterprise, government, and institutional clients to blockchain-native settlement — at scale and with full compliance.
             </p>
           </motion.div>
 
@@ -324,10 +324,10 @@ export default function Home() {
             style={{ borderColor: "rgba(0,212,255,0.2)", background: "rgba(0,212,255,0.04)" }}>
             
             <Fingerprint className="w-8 h-8 mx-auto mb-3" style={{ color: "#00d4ff" }} />
-            <p className="font-orbitron font-bold text-white mb-1">Every Position. ByteID-Stamped.</p>
+            <p className="font-orbitron font-bold text-white mb-1">Every Position. ByteID-Stamped. Enterprise-Grade.</p>
             <p className="text-sm text-white/40 max-w-xl mx-auto">
               Every position is independently valued, source-verified, and ByteID-stamped on-chain from day one —
-              giving institutions an unbreakable audit trail powered by quaternary DNA encoding.
+              giving enterprise, government, and institutional clients an unbreakable audit trail powered by quaternary DNA encoding.
             </p>
           </motion.div>
         </div>
@@ -339,15 +339,15 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left: copy */}
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
-              <p className="text-xs font-orbitron uppercase tracking-widest mb-3" style={{ color: "#ffd700" }}>Blockchain Technology</p>
+              <p className="text-xs font-orbitron uppercase tracking-widest mb-3" style={{ color: "#ffd700" }}>Technology Foundation</p>
               <h2 className="text-3xl sm:text-4xl font-orbitron font-bold text-white mb-6">
                 DNA Blockchain.<br />
-                <span style={{ color: "#00d4ff" }}>Quaternary Foundation.</span>
+                <span style={{ color: "#00d4ff" }}>Institutional-Grade.</span>
               </h2>
               <p className="text-white/50 mb-8 leading-relaxed">
-                QVTX operates two production chains with 31 patents underpinning the entire stack. Every byte of data is
-                compressed 40:1 into DNA codons, content-addressed via ByteID, and locked to an 8825 Hz resonance frequency
-                — creating provably unique, tamper-evident records at industrial scale.
+                QVTX operates two production chains backed by 31 patents, purpose-built to serve enterprise, government, and
+                institutional infrastructure needs. Every byte of data is compressed 40:1 into DNA codons, content-addressed
+                via ByteID, and locked to an 8825 Hz resonance frequency — delivering provably unique, tamper-evident records at industrial scale.
               </p>
 
               {/* Chain pills */}
@@ -416,10 +416,10 @@ export default function Home() {
             <div className="relative z-10">
               <Dna className="w-12 h-12 mx-auto mb-6" style={{ color: "#ffd700" }} />
               <h2 className="text-3xl sm:text-4xl font-orbitron font-black text-white mb-4">
-                Ready to Build on<br /><span style={{ color: "#ffd700" }}>DNA Infrastructure?</span>
+                Infrastructure Solutions<br /><span style={{ color: "#ffd700" }}>Built for Your Mission.</span>
               </h2>
               <p className="text-white/50 mb-10 max-w-xl mx-auto">
-                Whether you're an institution, fintech, or developer — QVTX provides the rails, the compliance, and the blockchain substrate to power your next-generation financial product.
+                Whether you're an enterprise, government agency, or institution — QVTX supplies the rails, compliance infrastructure, and blockchain substrate to power your next-generation financial operations.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
