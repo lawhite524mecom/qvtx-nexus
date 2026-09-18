@@ -105,7 +105,7 @@ export default function Layout({ children, currentPageName }) {
                     : "text-emerald-400"
                 }`}
               >
-                Buy QVTX
+                QVTX Coins
               </Link>
 
               <div className="w-px h-6 bg-white/20 mx-1" />
@@ -417,7 +417,7 @@ export default function Layout({ children, currentPageName }) {
                   className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border border-emerald-500/30 text-emerald-400"
                 >
                   <DollarSign className="w-5 h-5" />
-                  Buy QVTX
+                  QVTX Coins
                 </Link>
               </div>
 
