@@ -1,0 +1,306 @@
+/* =============================================================================
+ * QVTX CODON — Design System v1.0
+ * Token layer. Single source of truth for every QVTX surface.
+ *
+ * Tier 1 PRIMITIVE  --codon-<family>-<step>   raw values, never used directly
+ * Tier 2 SEMANTIC   --qvtx-<role>             what components consume
+ * Tier 3 COMPONENT  --panel-*, --metric-*     recipe-local, see components.css
+ *
+ * Dark is the default theme: both QVTX surfaces ship dark. The Ice theme
+ * (.theme-ice) is for print, PDF export, and document surfaces.
+ *
+ * Contrast: every text/background pair below is measured, not estimated.
+ * Ratios are noted inline. Body text >= 4.5:1, text >= 24px >= 3:1.
+ * ========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * TIER 1 — PRIMITIVES
+ * -------------------------------------------------------------------------- */
+:root {
+  /* --- Brand core (QUANTVESTRIX brand of record) --------------------------- */
+  --codon-gold-500: #f5a623; /* Xpress Gold — primary. CTAs, highlights.     */
+  --codon-gold-300: #ffd700; /* Signal Gold — on-dark glow/telemetry only.   */
+  --codon-gold-700: #b45309; /* Gold text on light surfaces (4.64:1 on Ice). */
+  --codon-navy-900: #0a2540; /* DNA Navy — text on gold, light-theme text.   */
+  --codon-charcoal: #2e2e2e; /* Charcoal — body text, light theme.           */
+  --codon-ice-50: #f4f6f8; /* Ice — primary text on dark, light canvas.      */
+
+  /* --- Quaternary bases (the accent system) -------------------------------
+   * A/C/G/T are the accent palette, not a metaphor laid over one. Base pairs
+   * are visual complements: A(cyan)-T(gold), C(crimson)-G(green).
+   * Bit mapping matches qvtx-os/kernel/constants.js: A=00 C=01 G=10 T=11.
+   * Each base has a fill value and a text value per theme, because the fill
+   * value does not always clear 4.5:1 as text.
+   */
+  --codon-adenine: #00d4ff; /* A · fill + text on dark (10.87:1)             */
+  --codon-adenine-700: #0e7490; /* A · text on light (4.95:1 on Ice)         */
+  --codon-thymine: #f5a623; /* T · fill + text on dark (9.49:1) = Xpress Gold*/
+  --codon-thymine-700: #b45309; /* T · text on light (4.64:1 on Ice)         */
+  --codon-guanine: #10b981; /* G · fill + text on dark (7.58:1)              */
+  --codon-guanine-700: #047857; /* G · text on light (5.06:1 on Ice)         */
+  --codon-cytosine: #e11d48; /* C · FILL ONLY on dark — 4.10:1 fails as text */
+  --codon-cytosine-400: #fb7185; /* C · text on dark (7.15:1)                */
+  --codon-cytosine-700: #be123c; /* C · text on light (5.80:1 on Ice)        */
+
+  /* --- Neutral ladder, dark ------------------------------------------------
+   * Four of these five steps are lifted verbatim from the shipped code.
+   */
+  --codon-dark-sunken: #080910; /* observed: page wells                      */
+  --codon-dark-canvas: #0a0b14; /* observed: Layout.jsx app background       */
+  --codon-dark-panel: #0d0e16; /* observed: GlassCard, StatCard (24 uses)    */
+  --codon-dark-raised: #0f1019; /* observed: PortalCard                      */
+  --codon-dark-overlay: #14151f; /* derived: popovers, dialogs above raised  */
+
+  /* --- Neutral ladder, light (Ice theme) ----------------------------------- */
+  --codon-light-canvas: #f4f6f8; /* Ice                                      */
+  --codon-light-panel: #fbfcfd; /* toned, never pure #ffffff                 */
+  --codon-light-raised: #ffffff;
+  --codon-light-sunken: #e8ecf0;
+
+  /* --- Text tiers --------------------------------------------------------- */
+  --codon-text-on-dark-1: #f4f6f8; /* 17.76:1 on panel                       */
+  --codon-text-on-dark-2: #a8b2c1; /* 8.98:1 on panel                        */
+  --codon-text-on-dark-3: #7d8898; /* 5.36:1 on panel — the muted tier.      */
+  /* NOTE: #6b7687 was the first candidate for tier 3 and measured 4.18:1.
+   * It failed. Do not reintroduce it.                                       */
+  --codon-text-on-light-1: #0a2540; /* 14.34:1 on Ice                        */
+  --codon-text-on-light-2: #2e2e2e; /* 12.54:1 on Ice                        */
+  --codon-text-on-light-3: #5a6674; /* 5.40:1 on Ice                         */
+
+  --codon-slate-400: #94a3b8; /* neutral accent, 7.50:1 on dark panel        */
+
+  /* --- Radius (weighted by shipped usage) --------------------------------- */
+  --codon-radius-control: 0.5rem; /* 8px  · rounded-lg, 176 uses             */
+  --codon-radius-card: 0.75rem; /* 12px · rounded-xl, 371 uses — dominant    */
+  --codon-radius-panel: 1rem; /* 16px · rounded-2xl, 50 uses                 */
+  --codon-radius-portal: 1.5rem; /* 24px · rounded-3xl, 7 uses               */
+  --codon-radius-pill: 9999px;
+
+  /* --- PHI spacing (PHI = 1.618034) ---------------------------------------
+   * Fibonacci approximates PHI at integer pixel values, so the scale lands on
+   * whole pixels and stays PHI-true. Use these for SECTION and STACK rhythm.
+   * Component internals stay on the 4px grid (--space-1/-2 below) so the
+   * scale never fights Tailwind's p-4 / gap-3.
+   */
+  --codon-phi-1: 8px;
+  --codon-phi-2: 13px;
+  --codon-phi-3: 21px;
+  --codon-phi-4: 34px;
+  --codon-phi-5: 55px;
+  --codon-phi-6: 89px;
+  --codon-phi-7: 144px;
+  --codon-space-1: 4px;
+  --codon-space-2: 8px;
+
+  /* --- Motion (ratio ~PHI; anchored to shipped durations) ------------------ */
+  --codon-dur-instant: 120ms;
+  --codon-dur-fast: 200ms; /* observed 31x — control state changes           */
+  --codon-dur-base: 320ms; /* observed duration-300 13x — card transitions   */
+  --codon-dur-slow: 520ms; /* observed duration-500 6x — portal reveals      */
+  --codon-dur-pulse: 1500ms; /* observed live-dot in qvtx-os                 */
+  --codon-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --codon-ease-lift: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* --- Typography --------------------------------------------------------- */
+  --codon-font-display: "Orbitron", "Trebuchet MS", sans-serif;
+  --codon-font-text: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --codon-font-data: "JetBrains Mono", "Courier New", monospace;
+
+  --codon-size-caption: 0.75rem; /* 12px */
+  --codon-size-small: 0.875rem; /* 14px */
+  --codon-size-body: 1rem; /* 16px */
+  --codon-size-lead: 1.25rem; /* 20px */
+  --codon-size-h3: 1.5rem; /* 24px */
+  --codon-size-h2: 2rem; /* 32px */
+  --codon-size-h1: 2.75rem; /* 44px */
+  --codon-size-display: 4rem; /* 64px */
+
+  --codon-tracking-display: 0.02em; /* Orbitron is wide; do not add more     */
+  --codon-tracking-eyebrow: 0.18em; /* uppercase labels                      */
+}
+
+/* -----------------------------------------------------------------------------
+ * TIER 2 — SEMANTIC (dark, the default)
+ * Components consume ONLY these. Never reach past this tier into Tier 1.
+ * -------------------------------------------------------------------------- */
+:root,
+.theme-dna {
+  --qvtx-canvas: var(--codon-dark-canvas);
+  --qvtx-sunken: var(--codon-dark-sunken);
+  --qvtx-panel: var(--codon-dark-panel);
+  --qvtx-raised: var(--codon-dark-raised);
+  --qvtx-overlay: var(--codon-dark-overlay);
+
+  --qvtx-text: var(--codon-text-on-dark-1);
+  --qvtx-text-secondary: var(--codon-text-on-dark-2);
+  --qvtx-text-muted: var(--codon-text-on-dark-3);
+
+  --qvtx-primary: var(--codon-gold-500);
+  --qvtx-on-primary: var(--codon-navy-900); /* 7.67:1 on gold               */
+  --qvtx-primary-hover: var(--codon-gold-300);
+
+  /* Status = the four bases. One palette, two jobs. */
+  --qvtx-info: var(--codon-adenine); /* A */
+  --qvtx-success: var(--codon-guanine); /* G */
+  --qvtx-warning: var(--codon-thymine); /* T */
+  --qvtx-danger: var(--codon-cytosine-400); /* C — text-safe tint on dark   */
+  --qvtx-danger-fill: var(--codon-cytosine); /* C — fills, strokes, bars    */
+  --qvtx-neutral: var(--codon-slate-400);
+
+  --qvtx-border-subtle: rgb(244 246 248 / 0.1); /* observed border-white/10 */
+  --qvtx-border: rgb(244 246 248 / 0.2); /* observed border-white/20        */
+  --qvtx-border-accent: rgb(0 212 255 / 0.4); /* observed cyan-500/40 hover */
+  --qvtx-ring: var(--codon-adenine);
+
+  /* Glow — the one decorative primitive the system keeps.
+   * Shipped values were 20px blur at 0.6 alpha; kept exactly.            */
+  --qvtx-glow-adenine: 0 0 20px rgb(0 212 255 / 0.6);
+  --qvtx-glow-thymine: 0 0 20px rgb(245 166 35 / 0.6);
+  --qvtx-glow-signal: 0 0 20px rgb(255 215 0 / 0.6);
+
+  --qvtx-shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
+  --qvtx-shadow-lift: 0 20px 40px -12px rgb(0 0 0 / 0.6);
+
+  color-scheme: dark;
+}
+
+/* -----------------------------------------------------------------------------
+ * TIER 2 — SEMANTIC (Ice theme: print, PDF, documents)
+ * Same role names, light values. Components need no change to work here.
+ * -------------------------------------------------------------------------- */
+.theme-ice {
+  --qvtx-canvas: var(--codon-light-canvas);
+  --qvtx-sunken: var(--codon-light-sunken);
+  --qvtx-panel: var(--codon-light-panel);
+  --qvtx-raised: var(--codon-light-raised);
+  --qvtx-overlay: var(--codon-light-raised);
+
+  --qvtx-text: var(--codon-text-on-light-1);
+  --qvtx-text-secondary: var(--codon-text-on-light-2);
+  --qvtx-text-muted: var(--codon-text-on-light-3);
+
+  --qvtx-primary: var(--codon-gold-500);
+  --qvtx-on-primary: var(--codon-navy-900);
+  --qvtx-primary-hover: var(--codon-gold-700);
+
+  /* Every accent steps down to its -700 tint: the fill values measure
+   * 1.87:1 (gold) to 4.34:1 (crimson) on Ice and fail as text.          */
+  --qvtx-info: var(--codon-adenine-700);
+  --qvtx-success: var(--codon-guanine-700);
+  --qvtx-warning: var(--codon-thymine-700);
+  --qvtx-danger: var(--codon-cytosine-700);
+  --qvtx-danger-fill: var(--codon-cytosine);
+  --qvtx-neutral: var(--codon-text-on-light-3);
+
+  --qvtx-border-subtle: rgb(10 37 64 / 0.08);
+  --qvtx-border: rgb(10 37 64 / 0.16);
+  --qvtx-border-accent: rgb(14 116 144 / 0.4);
+  --qvtx-ring: var(--codon-adenine-700);
+
+  /* Glow is a dark-surface effect. It reads as smudge on Ice: off. */
+  --qvtx-glow-adenine: none;
+  --qvtx-glow-thymine: none;
+  --qvtx-glow-signal: none;
+
+  --qvtx-shadow-card: 0 1px 2px rgb(10 37 64 / 0.06);
+  --qvtx-shadow-lift: 0 20px 40px -12px rgb(10 37 64 / 0.14);
+
+  color-scheme: light;
+}
+
+/* -----------------------------------------------------------------------------
+ * SHADCN/RADIX BRIDGE
+ * The 53 primitives in src/components/ui read shadcn's HSL channel triplets.
+ * This maps them onto Codon so those components inherit the system instead of
+ * resolving to shadcn's light defaults (which is what ships today: the .dark
+ * class is never applied anywhere in the app, so bg-card renders white on the
+ * hardcoded dark shell).
+ *
+ * Values are "H S% L%" channel triplets, NOT hsl() calls — Tailwind wraps them.
+ * -------------------------------------------------------------------------- */
+:root,
+.theme-dna {
+  --background: 231 27% 6%; /* #0a0b14 */
+  --foreground: 210 20% 96%; /* #f4f6f8 */
+  --card: 233 24% 7%; /* #0d0e16 */
+  --card-foreground: 210 20% 96%;
+  --popover: 232 20% 10%; /* #14151f */
+  --popover-foreground: 210 20% 96%;
+  --primary: 37 91% 55%; /* #f5a623 Xpress Gold */
+  --primary-foreground: 208 73% 15%; /* #0a2540 DNA Navy */
+  --secondary: 234 22% 9%; /* #0f1019 */
+  --secondary-foreground: 210 20% 96%;
+  --muted: 234 22% 9%;
+  --muted-foreground: 215 12% 55%; /* #7d8898 — the 4.5:1-safe tier */
+  --accent: 190 100% 50%; /* #00d4ff Adenine */
+  --accent-foreground: 208 73% 15%;
+  --destructive: 347 77% 50%; /* #e11d48 Cytosine */
+  --destructive-foreground: 210 20% 96%;
+  --border: 233 20% 18%;
+  --input: 233 20% 18%;
+  --ring: 190 100% 50%;
+  --radius: 0.75rem; /* was 0.5rem; 12px is what the app actually uses */
+
+  /* Charts: the four bases, then slate. Ordered so adjacent series differ in
+   * lightness as well as hue (cyan 10.9 / gold 9.5 / green 7.6 / slate 7.5
+   * / crimson 7.2 against the panel).                                    */
+  --chart-1: 190 100% 50%; /* Adenine cyan   */
+  --chart-2: 37 91% 55%; /* Thymine gold     */
+  --chart-3: 160 84% 39%; /* Guanine green   */
+  --chart-4: 351 95% 71%; /* Cytosine rose   */
+  --chart-5: 213 20% 65%; /* Slate           */
+
+  --sidebar-background: 233 24% 7%;
+  --sidebar-foreground: 210 20% 96%;
+  --sidebar-primary: 37 91% 55%;
+  --sidebar-primary-foreground: 208 73% 15%;
+  --sidebar-accent: 234 22% 9%;
+  --sidebar-accent-foreground: 210 20% 96%;
+  --sidebar-border: 233 20% 18%;
+  --sidebar-ring: 190 100% 50%;
+}
+
+.theme-ice {
+  --background: 210 20% 96%;
+  --foreground: 208 73% 15%;
+  --card: 210 25% 99%;
+  --card-foreground: 208 73% 15%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 208 73% 15%;
+  --primary: 37 91% 55%;
+  --primary-foreground: 208 73% 15%;
+  --secondary: 210 20% 92%;
+  --secondary-foreground: 208 73% 15%;
+  --muted: 210 20% 92%;
+  --muted-foreground: 213 13% 40%;
+  --accent: 192 82% 32%;
+  --accent-foreground: 210 20% 96%;
+  --destructive: 347 77% 50%;
+  --destructive-foreground: 210 20% 96%;
+  --border: 208 73% 88%;
+  --input: 208 73% 88%;
+  --ring: 192 82% 32%;
+
+  --chart-1: 192 82% 32%;
+  --chart-2: 32 81% 37%;
+  --chart-3: 164 94% 24%;
+  --chart-4: 344 82% 40%;
+  --chart-5: 213 13% 40%;
+}
+
+/* -----------------------------------------------------------------------------
+ * RETIRED TOKENS — do not reintroduce
+ *
+ *   --qvtx-cyan: #00d4ff      -> --codon-adenine (same value, named role)
+ *   --qvtx-gold: #ffd700      -> --qvtx-primary (#f5a623, brand of record).
+ *                                #ffd700 survives ONLY as --codon-gold-300,
+ *                                the on-dark signal/glow tint.
+ *   violet / purple / fuchsia / indigo (139 shipped usages)
+ *                             -> --qvtx-info or --qvtx-danger by role.
+ *                                Purple is excluded from branded output.
+ *   #8844ff (qvtx-os accent)   -> --qvtx-primary
+ *   #00ff88 (qvtx-os "live")   -> --qvtx-success (#10b981)
+ *   #ff4444 / #ffaa00          -> --qvtx-danger / --qvtx-warning
+ *   'Courier New' default      -> --codon-font-data (JetBrains Mono)
+ *   #f472b6 / #a78bfa (rarity) -> see RARITY ramp in README.md
+ * -------------------------------------------------------------------------- */

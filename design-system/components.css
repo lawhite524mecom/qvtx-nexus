@@ -1,0 +1,295 @@
+/* =============================================================================
+ * QVTX CODON — Component recipes (Tier 3)
+ *
+ * Each recipe below already exists in the codebase as an ad-hoc set of literal
+ * classes. This file is where that shape becomes one named thing, defined once,
+ * in tokens. Every value here resolves through Tier 2 — no literal hex.
+ *
+ * Load after tokens.css.
+ * ========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * PANEL — from src/components/ui/GlassCard.jsx
+ * Was: bg-[#0d0e16] border border-white/20 rounded-2xl p-6
+ *      hover:border-cyan-500/40 hover:bg-[#0f1019] transition-all duration-300
+ * -------------------------------------------------------------------------- */
+.codon-panel {
+  position: relative;
+  background: var(--qvtx-panel);
+  border: 1px solid var(--qvtx-border);
+  border-radius: var(--codon-radius-panel);
+  padding: var(--codon-phi-3);
+  box-shadow: var(--qvtx-shadow-card);
+  transition:
+    border-color var(--codon-dur-base) var(--codon-ease-out),
+    background-color var(--codon-dur-base) var(--codon-ease-out),
+    transform var(--codon-dur-base) var(--codon-ease-lift),
+    box-shadow var(--codon-dur-base) var(--codon-ease-out);
+}
+
+.codon-panel--interactive:hover {
+  background: var(--qvtx-raised);
+  border-color: var(--qvtx-border-accent);
+}
+
+/* The lift. Shipped as hover:-translate-y-1 hover:shadow-xl on three different
+ * components with three different durations; unified here. */
+.codon-panel--lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--qvtx-shadow-lift);
+}
+
+/* -----------------------------------------------------------------------------
+ * CODON RULE — the system's one unifying motif.
+ * Carried over from qvtx-os/index.html `.panel::before`, which drew a 2px
+ * gradient bar across the top of every dashboard panel. It was the only piece
+ * of deliberate visual identity in that surface, so it becomes the shared mark
+ * across both apps. The gradient runs A -> T: cyan into gold, a base pair.
+ * -------------------------------------------------------------------------- */
+.codon-rule::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  border-radius: var(--codon-radius-panel) var(--codon-radius-panel) 0 0;
+  background: linear-gradient(90deg, var(--codon-adenine), var(--codon-thymine));
+}
+
+/* Pair variants, for panels that need to encode which half of the system they
+ * belong to rather than just carry the mark. */
+.codon-rule--cg::before {
+  background: linear-gradient(90deg, var(--codon-cytosine), var(--codon-guanine));
+}
+
+/* -----------------------------------------------------------------------------
+ * METRIC — from src/components/ui/StatCard.jsx
+ *
+ * The shipped card set its label to `text-sm text-white` and its subtitle to
+ * `text-xs text-white` — the same colour as the value. Three tiers of
+ * information at one emphasis, so nothing read as secondary. The recipe below
+ * restores the hierarchy using the text tiers: label muted, value full, delta
+ * coloured by direction.
+ * -------------------------------------------------------------------------- */
+.codon-metric {
+  display: flex;
+  flex-direction: column;
+  gap: var(--codon-phi-1);
+}
+
+.codon-metric__label {
+  font-family: var(--codon-font-text);
+  font-size: var(--codon-size-small);
+  font-weight: 500;
+  color: var(--qvtx-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--codon-tracking-eyebrow);
+}
+
+/* Figures are data: they take the mono face so digits align in a column and
+ * do not reflow as values tick. */
+.codon-metric__value {
+  font-family: var(--codon-font-data);
+  font-size: var(--codon-size-h2);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--qvtx-text);
+  line-height: 1.1;
+}
+
+.codon-metric__subtitle {
+  font-size: var(--codon-size-caption);
+  color: var(--qvtx-text-muted);
+}
+
+.codon-metric__delta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--codon-space-1);
+  font-family: var(--codon-font-data);
+  font-size: var(--codon-size-small);
+  font-variant-numeric: tabular-nums;
+}
+
+.codon-metric__delta--up {
+  color: var(--qvtx-success);
+}
+
+.codon-metric__delta--down {
+  color: var(--qvtx-danger);
+}
+
+/* Accent variants. The shipped StatCard offered cyan / emerald / violet /
+ * amber / rose; violet is retired, and the remaining four are the bases. */
+.codon-metric--a .codon-metric__value {
+  color: var(--codon-adenine);
+}
+.codon-metric--g .codon-metric__value {
+  color: var(--codon-guanine);
+}
+.codon-metric--t .codon-metric__value {
+  color: var(--codon-thymine);
+}
+.codon-metric--c .codon-metric__value {
+  color: var(--codon-cytosine-400); /* the text-safe tint, not the fill */
+}
+
+/* -----------------------------------------------------------------------------
+ * STATUS DOT — from qvtx-os/index.html `.live-dot` + `#conn-status`
+ * Colour never carries the state alone: the dot is always paired with its
+ * label, and the label says the state in words.
+ * -------------------------------------------------------------------------- */
+.codon-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--codon-space-2);
+  font-family: var(--codon-font-data);
+  font-size: var(--codon-size-small);
+  letter-spacing: 0.04em;
+}
+
+.codon-status__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--codon-radius-pill);
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.codon-status--live {
+  color: var(--qvtx-success);
+}
+.codon-status--live .codon-status__dot {
+  animation: codon-pulse var(--codon-dur-pulse) ease-in-out infinite;
+}
+.codon-status--degraded {
+  color: var(--qvtx-warning);
+}
+.codon-status--down {
+  color: var(--qvtx-danger);
+}
+.codon-status--idle {
+  color: var(--qvtx-text-muted);
+}
+
+@keyframes codon-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Respect the viewer. The shipped dashboard pulsed unconditionally. */
+@media (prefers-reduced-motion: reduce) {
+  .codon-status--live .codon-status__dot {
+    animation: none;
+  }
+  .codon-panel {
+    transition: none;
+  }
+  .codon-panel--lift:hover {
+    transform: none;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+ * HELIX — from src/components/nft/DNAHelix.jsx
+ * The base colours now come from the canonical mapping, resolving the conflict
+ * between DNAHelix (A cyan / C gold / G green / T pink) and DNAEncoder
+ * (A cyan / C green / G amber / T rose).
+ * -------------------------------------------------------------------------- */
+.codon-helix {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.codon-helix__base {
+  width: 6px;
+  border-radius: var(--codon-radius-pill);
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+.codon-helix__base[data-base='A'] {
+  background: var(--codon-adenine);
+  box-shadow: 0 0 6px var(--codon-adenine);
+}
+.codon-helix__base[data-base='C'] {
+  background: var(--codon-cytosine);
+  box-shadow: 0 0 6px var(--codon-cytosine);
+}
+.codon-helix__base[data-base='G'] {
+  background: var(--codon-guanine);
+  box-shadow: 0 0 6px var(--codon-guanine);
+}
+.codon-helix__base[data-base='T'] {
+  background: var(--codon-thymine);
+  box-shadow: 0 0 6px var(--codon-thymine);
+}
+
+/* -----------------------------------------------------------------------------
+ * SEQUENCE — monospace nucleotide runs (ByteID, codon listings, compression).
+ * Replaces the per-base Tailwind text colours in DNAEncoder.jsx.
+ * -------------------------------------------------------------------------- */
+.codon-sequence {
+  font-family: var(--codon-font-data);
+  font-size: var(--codon-size-body);
+  letter-spacing: 0.08em;
+  color: var(--qvtx-text-secondary);
+  word-break: break-all;
+}
+
+.codon-sequence [data-base='A'] {
+  color: var(--codon-adenine);
+}
+.codon-sequence [data-base='C'] {
+  color: var(--codon-cytosine-400);
+}
+.codon-sequence [data-base='G'] {
+  color: var(--codon-guanine);
+}
+.codon-sequence [data-base='T'] {
+  color: var(--codon-thymine);
+}
+
+/* -----------------------------------------------------------------------------
+ * EYEBROW — the uppercase tracked label used above panel titles in both apps
+ * (qvtx-os `.panel h2` was uppercase + 2px tracking in the accent colour).
+ * -------------------------------------------------------------------------- */
+.codon-eyebrow {
+  font-family: var(--codon-font-display);
+  font-size: var(--codon-size-caption);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--codon-tracking-eyebrow);
+  color: var(--qvtx-primary);
+}
+
+/* -----------------------------------------------------------------------------
+ * GLOW — from the .dna-glow-* utilities in src/index.css.
+ * Kept as-is in value, moved onto tokens, and scoped so it only applies to
+ * display type. It was applied to body copy in places, which cost legibility.
+ * -------------------------------------------------------------------------- */
+.codon-glow-a {
+  text-shadow: var(--qvtx-glow-adenine);
+}
+.codon-glow-t {
+  text-shadow: var(--qvtx-glow-thymine);
+}
+.codon-glow-signal {
+  text-shadow: var(--qvtx-glow-signal);
+}
+
+/* -----------------------------------------------------------------------------
+ * FOCUS — the system had no consistent focus treatment outside shadcn's own
+ * focus-visible rings. This is the floor for anything interactive.
+ * -------------------------------------------------------------------------- */
+.codon-focusable:focus-visible {
+  outline: 2px solid var(--qvtx-ring);
+  outline-offset: 2px;
+  border-radius: var(--codon-radius-control);
+}
