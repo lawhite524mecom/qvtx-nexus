@@ -710,8 +710,8 @@ export default function Layout({ children, currentPageName }) {
               <p className="text-xs text-white/30 mt-1">© 2026 QVTX. All rights reserved.</p>
             </div>
             <div className="flex items-center gap-6 text-sm text-white">
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
+              <Link to={createPageUrl("PrivacyPolicy")} className="hover:text-white transition-colors">Privacy</Link>
+              <Link to={createPageUrl("TermsOfService")} className="hover:text-white transition-colors">Terms</Link>
             </div>
           </div>
         </div>

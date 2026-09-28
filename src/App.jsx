@@ -9,6 +9,8 @@ import QVTXEMining from './pages/QVTXEMining'
 import NFTGallery from './pages/NFTGallery'
 import MyNFTs from './pages/MyNFTs'
 import NFTDetail from './pages/NFTDetail'
+import TermsOfService from './pages/TermsOfService'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 import ServicesCatalog from './pages/ServicesCatalog'
 import GatedRoute from './components/auth/GatedRoute'
 import { QueryClientProvider } from '@tanstack/react-query'
@@ -113,6 +115,16 @@ const AuthenticatedApp = () => {
       <Route path="/NFTDetail" element={
         <LayoutWrapper currentPageName="NFTDetail">
           <NFTDetail />
+        </LayoutWrapper>
+      } />
+      <Route path="/TermsOfService" element={
+        <LayoutWrapper currentPageName="TermsOfService">
+          <TermsOfService />
+        </LayoutWrapper>
+      } />
+      <Route path="/PrivacyPolicy" element={
+        <LayoutWrapper currentPageName="PrivacyPolicy">
+          <PrivacyPolicy />
         </LayoutWrapper>
       } />
       <Route path="/chain/:chainId" element={
